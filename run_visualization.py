@@ -5,7 +5,7 @@ import streamlit as st
 from matplotlib import pyplot as plt
 from confluent_kafka import Consumer
 
-from producers.configurations import (data_processor_config,
+from producers.configurations import (data_producer_config_1,
                                       data_processor_topic_config)
 
 if "data" not in st.session_state:
@@ -14,7 +14,7 @@ if "data" not in st.session_state:
 
 def main():
     topic_consume = [data_processor_topic_config]
-    conf_consume = {**data_processor_config, 'group.id': 'data_visualizers'}
+    conf_consume = {**data_producer_config_1, 'group.id': 'data_visualizers'}
     consumer = Consumer(conf_consume)
     consumer.subscribe(topic_consume)
 
